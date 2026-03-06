@@ -18,14 +18,36 @@
   --font-body: 'Inter', Arial, sans-serif;
 }
 
+
 body {
-  background: var(--color-bg);
+  background: linear-gradient(135deg, #fffbe7 0%, #ffe066 100%) fixed;
   color: var(--color-text);
   font-family: var(--font-body);
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  opacity: 0.18;
+  background-image:
+    repeating-linear-gradient(60deg, #fbbf24 0 2px, transparent 2px 40px),
+    repeating-linear-gradient(120deg, #fbbf24 0 2px, transparent 2px 40px),
+    url('data:image/svg+xml;utf8,<svg width="120" height="104" viewBox="0 0 120 104" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="60,4 116,32 116,88 60,116 4,88 4,32" fill="%23ffe066" stroke="%23fbbf24" stroke-width="4"/></svg>');
+  background-size: 100vw 100vh, 100vw 100vh, 120px 104px;
+  background-position: 0 0, 0 0, 0 0;
+  background-repeat: repeat, repeat, repeat;
+  pointer-events: none;
 }
 
 .bee-gradient {
-  background: linear-gradient(90deg, #fffbe7 0%, #fffde4 100%);
+  background: linear-gradient(120deg, #fffbe7 0%, #fffde4 60%, #ffe066 100%);
+  box-shadow: 0 8px 32px 0 rgba(251,191,36,0.08);
+  position: relative;
+  z-index: 1;
 }
 
 .bee-bubble {

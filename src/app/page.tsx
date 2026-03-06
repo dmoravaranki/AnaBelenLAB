@@ -125,7 +125,13 @@ export default function ChatUI() {
           <button className="bee-btn" type="submit">{sendLabel}</button>
         </form>
       </div>
-      <footer className="text-xs text-[var(--color-muted)] mb-2">Bee AI &copy; 2026</footer>
+      <footer className="text-xs text-[var(--color-muted)] mb-2 flex flex-col items-center gap-1">
+        <span>Bee AI &copy; 2026</span>
+        <span className="flex items-center gap-2 mt-1">
+          <img src="/azure-ai-foundry-logo.jpg" alt="Azure AI Foundry Logo" style={{ height: 24, width: 'auto', display: 'inline-block', verticalAlign: 'middle' }} />
+          <span>Powered by Azure OpenAI</span>
+        </span>
+      </footer>
     </div>
   );
 }
