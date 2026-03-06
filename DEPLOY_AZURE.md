@@ -33,11 +33,21 @@ Follow these steps to deploy your Next.js Bee AI app to Azure:
 ## 4. Configure Environment Variables
 1. In Azure Portal, go to your Static Web App resource.
 2. Under **Settings**, select **Configuration**.
-3. Add these variables:
-   - `AZURE_OPENAI_ENDPOINT`
-   - `AZURE_OPENAI_API_KEY`
-   - `AZURE_OPENAI_DEPLOYMENT`
+3. Add these variables (for each, enter the Name and the Value):
+    - **Name:** AZURE_OPENAI_ENDPOINT  
+       **Value:** Your Azure OpenAI endpoint URL (e.g. `https://YOUR-RESOURCE-NAME.openai.azure.com`)
+    - **Name:** AZURE_OPENAI_API_KEY  
+       **Value:** Your Azure OpenAI API key
+    - **Name:** AZURE_OPENAI_DEPLOYMENT  
+       **Value:** The deployment name of your model (e.g. `gpt-35-turbo` or `gpt-4`)
 4. Save and restart the app.
+
+**If you do not have an Azure OpenAI resource yet:**
+1. Go to the Azure Portal and search for "Azure OpenAI".
+2. Create a new Azure OpenAI resource (you may need to request access if you haven't already).
+3. In the Azure OpenAI Studio, deploy a model (e.g. gpt-35-turbo or gpt-4) and note the deployment name.
+4. Copy your endpoint URL and API key from the Azure OpenAI resource.
+5. Use these values for the environment variables above.
 
 ## 5. Test Your App
 - After deployment, Azure provides a public URL (e.g., https://<your-app>.azurestaticapps.net).
