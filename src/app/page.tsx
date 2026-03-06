@@ -88,7 +88,12 @@ export default function ChatUI() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bee-gradient px-2">
-      <div className="w-full max-w-2xl flex flex-col items-center justify-center rounded-2xl shadow-lg bg-white/80 p-6 mt-10 mb-8 border border-yellow-100">
+      <div className="w-full max-w-2xl flex flex-col items-center justify-center rounded-2xl shadow-lg bg-white/80 p-6 mt-10 mb-8 border border-yellow-100 relative">
+        <img
+          src="/azure-ai-foundry-logo.jpg"
+          alt="Azure AI Foundry Logo"
+          style={{ position: 'absolute', top: 18, right: 18, height: 54, width: 'auto', zIndex: 10, borderRadius: 8, boxShadow: '0 2px 8px #fbbf24aa' }}
+        />
         <header className="mb-4 text-center">
           <BeeMascot />
           <h1 className="bee-header">Bee AI Chat</h1>
@@ -128,7 +133,6 @@ export default function ChatUI() {
       <footer className="text-xs text-[var(--color-muted)] mb-2 flex flex-col items-center gap-1">
         <span>Bee AI &copy; 2026</span>
         <span className="flex items-center gap-2 mt-1">
-          <img src="/azure-ai-foundry-logo.jpg" alt="Azure AI Foundry Logo" style={{ height: 24, width: 'auto', display: 'inline-block', verticalAlign: 'middle' }} />
           <span>Powered by Azure OpenAI</span>
         </span>
       </footer>
