@@ -6,6 +6,7 @@ export async function POST(request: NextRequest) {
   // Foundry endpoint and key from environment variables
   const endpoint = process.env.AZURE_OPENAI_ENDPOINT;
   const apiKey = process.env.AZURE_OPENAI_API_KEY;
+  const deployment = "gpt-4.1-mini"; // Must match your deployment name
 
   if (!endpoint || !apiKey) {
     return NextResponse.json({ error: "Azure Foundry endpoint or key not configured." }, { status: 500 });
@@ -27,8 +28,9 @@ export async function POST(request: NextRequest) {
           { role: "system", content: lang === 'es' ? "Eres BeeBot, un experto en abejas para niños." : "You are BeeBot, a bee expert for kids." },
           { role: "user", content: prompt }
         ],
-        max_tokens: 256,
-        temperature: 0.7
+        max_completion_tokens: 512,
+        temperature: 0.7,
+        model: deployment
       })
     });
     const data = await aiRes.json();
