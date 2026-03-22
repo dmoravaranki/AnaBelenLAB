@@ -6,7 +6,7 @@ export default function KidsBuild() {
   const [name, setName] = useState("");
   const [showNamePopup, setShowNamePopup] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [allPrompts, setAllPrompts] = useState([]);
+  const [allPrompts, setAllPrompts] = useState<any[]>([]);
 
   // Fetch all prompts from backend on mount
   useEffect(() => {
