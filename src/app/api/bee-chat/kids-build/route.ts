@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // Cosmos DB connection setup
-const COSMOSDB_URI = process.env.COSMOSDB_URI;
-const COSMOSDB_DBNAME = process.env.COSMOSDB_DBNAME;
-const COSMOSDB_COLLECTION = process.env.COSMOSDB_COLLECTION;
+const COSMOSDB_URI = process.env.AZURE_COSMOS_CONNECTIONSTRING || process.env.COSMOSDB_URI;
+// Extract database name from connection string or hardcode if known
+const COSMOSDB_DBNAME = 'beechat-database'; // Replace with your actual DB name if different
+const COSMOSDB_COLLECTION = 'prompts'; // Replace with your actual collection name if different
 
 // Only import MongoClient on the server
 let cachedClient: any = null;
