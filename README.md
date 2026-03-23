@@ -1,3 +1,4 @@
+<!-- Redeploy trigger: March 22, 2026, npm install workflow test -->
 <!-- Trigger redeploy: March 22, 2026 -->
 # Redeploy trigger: March 22, 2026
 <!-- redeploy trigger (March 22, 2026) -->
