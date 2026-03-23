@@ -6,22 +6,20 @@ const COSMOSDB_URI = process.env.AZURE_COSMOS_CONNECTIONSTRING || process.env.CO
 const COSMOSDB_DBNAME = 'beechat-database'; // Replace with your actual DB name if different
 const COSMOSDB_COLLECTION = 'prompts'; // Replace with your actual collection name if different
 
-// Only import MongoClient on the server
-let cachedClient: any = null;
 
+// Always create a new MongoClient per request (no caching)
 async function getClient() {
-  if (!cachedClient) {
-    const { MongoClient } = await import('mongodb');
-    cachedClient = new MongoClient(COSMOSDB_URI!);
-    await cachedClient.connect();
-  }
-  return cachedClient;
+  const { MongoClient } = await import('mongodb');
+  const client = new MongoClient(COSMOSDB_URI!);
+  await client.connect();
+  return client;
 }
 
 export async function POST(req: NextRequest) {
+  let client;
   try {
     const body = await req.json();
-    const client = await getClient();
+    client = await getClient();
     const db = client.db(COSMOSDB_DBNAME);
     const collection = db.collection(COSMOSDB_COLLECTION!);
     const result = await collection.insertOne(body);
@@ -29,12 +27,15 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error("Kids Build API POST error:", error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  } finally {
+    if (client) await client.close();
   }
 }
 
 export async function GET() {
+  let client;
   try {
-    const client = await getClient();
+    client = await getClient();
     const db = client.db(COSMOSDB_DBNAME);
     const collection = db.collection(COSMOSDB_COLLECTION!);
     const prompts = await collection.find({}).toArray();
@@ -42,5 +43,7 @@ export async function GET() {
   } catch (error: any) {
     console.error("Kids Build API GET error:", error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  } finally {
+    if (client) await client.close();
   }
 }
