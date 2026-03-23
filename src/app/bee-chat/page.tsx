@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 
 function BeeMascot() {
 	return (
-		<div className="bee-mascot" aria-label="Bee mascot" title="BeeBot">
+		<div className="bee-mascot" aria-label="QueenBee mascot" title="QueenBee">
 			🐝
 		</div>
 	);
@@ -21,8 +21,8 @@ function MessageBubble({ message, sender }: { message: string; sender: 'user' | 
 export default function ChatUI() {
 	const [lang, setLang] = useState<'en' | 'es'>('en');
 	const greeting = lang === 'en'
-		? "Hi! I'm BeeBot. Ask me anything about bees!"
-		: "¡Hola! Soy BeeBot. ¡Pregúntame lo que quieras sobre abejas!";
+		? "Hi! I'm QueenBee. Ask me anything about bees!"
+		: "¡Hola! Soy QueenBee. ¡Pregúntame lo que quieras sobre abejas!";
 	const placeholder = lang === 'en' ? 'Type your question...' : 'Escribe tu pregunta...';
 	const sendLabel = lang === 'en' ? 'Send' : 'Enviar';
 	const [messages, setMessages] = useState([
@@ -57,7 +57,7 @@ export default function ChatUI() {
 		// Show thinking message
 		setMessages((msgs) => [
 			...msgs,
-			{ sender: 'ai', message: lang === 'en' ? '(BeeBot is thinking...)' : '(BeeBot está pensando...)' }
+			{ sender: 'ai', message: lang === 'en' ? '(QueenBee is thinking...)' : '(QueenBee está pensando...)' }
 		]);
 		try {
 			const res = await fetch('/api/chat', {
@@ -95,7 +95,7 @@ export default function ChatUI() {
 				/>
 				<header className="mb-4 text-center">
 					<BeeMascot />
-					<h1 className="bee-header">Bee AI Chat</h1>
+					  <h1 className="bee-header">QueenBee Chat</h1>
 					<div className="flex justify-center gap-2 mb-2">
 						<button
 							className={`bee-btn px-4 py-1 text-base ${lang === 'en' ? 'bg-[var(--color-accent)]' : ''}`}
@@ -130,7 +130,7 @@ export default function ChatUI() {
 				</form>
 			</div>
 			<footer className="text-xs text-[var(--color-muted)] mb-2 flex flex-col items-center gap-1">
-				<span>Bee AI &copy; 2026</span>
+				<span>QueenBee &copy; 2026</span>
 				<span className="flex items-center gap-2 mt-1">
 					<span>Powered by Azure OpenAI</span>
 				</span>
