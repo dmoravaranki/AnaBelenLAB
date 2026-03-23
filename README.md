@@ -1,3 +1,4 @@
+<!-- Trigger Docker build and push: Node 24, March 22, 2026 -->
 <!-- Trigger Docker image build and push: March 22, 2026 -->
 <!-- Redeploy trigger: workflow uploads full working directory (March 22, 2026) -->
 <!-- Redeploy trigger: March 22, 2026, npm install workflow test -->
