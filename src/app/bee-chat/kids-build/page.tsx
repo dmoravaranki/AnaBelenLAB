@@ -12,7 +12,7 @@ export default function KidsBuild() {
   useEffect(() => {
     fetch("/api/bee-chat/kids-build")
       .then(res => res.json())
-      .then(data => Array.isArray(data) ? setAllPrompts(data) : setAllPrompts([]));
+      .then(data => Array.isArray(data.prompts) ? setAllPrompts(data.prompts) : setAllPrompts([]));
   }, []);
 
   function handleSubmit(e: React.FormEvent) {
@@ -34,7 +34,7 @@ export default function KidsBuild() {
     if (res.ok) {
       // Fetch updated list
       const updated = await fetch("/api/bee-chat/kids-build").then(r => r.json());
-      setAllPrompts(updated);
+      setAllPrompts(updated.prompts || []);
       setPrompt("");
       setName("");
       setShowNamePopup(false);
