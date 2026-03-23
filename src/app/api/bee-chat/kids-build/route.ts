@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
     const result = await collection.insertOne(body);
     return NextResponse.json({ success: true, id: result.insertedId });
   } catch (error: any) {
+    console.error("Kids Build API POST error:", error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
@@ -39,6 +40,7 @@ export async function GET() {
     const prompts = await collection.find({}).toArray();
     return NextResponse.json({ success: true, prompts });
   } catch (error: any) {
+    console.error("Kids Build API GET error:", error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
