@@ -45,7 +45,7 @@ export async function PATCH(req: NextRequest) {
       { $inc: { votes: 1 } },
       { returnDocument: "after" }
     );
-    if (!result.value) {
+    if (!result || !result.value) {
       return NextResponse.json({ success: false, error: "Prompt not found" }, { status: 404 });
     }
     return NextResponse.json({ success: true, prompt: result.value });
