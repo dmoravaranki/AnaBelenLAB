@@ -1,7 +1,13 @@
 import { MongoClient } from "mongodb";
 
-const uri = process.env.AZURE_COSMOS_CONNECTIONSTRING || process.env.COSMOSDB_URI;
-if (!uri) throw new Error("Missing MongoDB connection string");
+
+const uri = process.env.AZURE_COSMOS_CONNECTIONSTRING || "mongodb://invalid"; // fallback for build
+
+if (!process.env.AZURE_COSMOS_CONNECTIONSTRING) {
+  console.warn(
+    "Warning: No AZURE_COSMOS_CONNECTIONSTRING found. Using fallback URI. This may cause runtime errors if not set in production."
+  );
+}
 
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
