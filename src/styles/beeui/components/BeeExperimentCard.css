@@ -1,0 +1,31 @@
+/* BeeExperimentCard component styles */
+.bee-experiment-card {
+  @apply rounded-xl border bg-white overflow-hidden;
+  border-color: var(--bee-border);
+  box-shadow: var(--bee-shadow-md);
+}
+
+.bee-experiment-image {
+  @apply w-full h-40 object-cover bg-gray-100;
+}
+
+.bee-experiment-body {
+  @apply p-4 flex flex-col gap-2;
+}
+
+.bee-experiment-title {
+  font-size: var(--bee-font-lg);
+  font-weight: var(--bee-weight-semibold);
+  color: var(--bee-primary-dark);
+}
+
+.bee-experiment-grade {
+  font-size: var(--bee-font-sm);
+  color: #64748B;
+}
+
+.bee-experiment-difficulty {
+  @apply inline-block px-2 py-1 rounded-full text-xs;
+  background: var(--bee-info-bg);
+  color: var(--bee-info);
+}

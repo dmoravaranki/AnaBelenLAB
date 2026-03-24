@@ -1,0 +1,246 @@
+/* TYPOGRAPHY UTILITIES */
+.bee-title {
+  font-size: var(--bee-font-2xl);
+  font-weight: var(--bee-weight-bold);
+  line-height: var(--bee-leading-tight);
+  color: var(--bee-primary-dark);
+}
+
+.bee-subtitle {
+  font-size: var(--bee-font-lg);
+  font-weight: var(--bee-weight-semibold);
+  color: var(--bee-primary-dark);
+}
+
+.bee-text {
+  font-size: var(--bee-font-md);
+  line-height: var(--bee-leading-normal);
+  color: #334155;
+}
+
+.bee-label {
+  font-size: var(--bee-font-sm);
+  font-weight: var(--bee-weight-medium);
+  color: var(--bee-primary-dark);
+}
+/* LAYOUT & SPACING UTILITIES */
+.bee-section {
+  padding: var(--bee-space-8) var(--bee-space-6);
+}
+
+.bee-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bee-space-4);
+}
+
+.bee-grid {
+  display: grid;
+  gap: var(--bee-space-6);
+}
+
+.bee-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.bee-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+/* beeui.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+      /* Typography scale */
+      --bee-font-xs: 0.75rem;
+      --bee-font-sm: 0.875rem;
+      --bee-font-md: 1rem;
+      --bee-font-lg: 1.125rem;
+      --bee-font-xl: 1.25rem;
+      --bee-font-2xl: 1.5rem;
+      --bee-font-3xl: 1.875rem;
+
+      /* Font weights */
+      --bee-weight-regular: 400;
+      --bee-weight-medium: 500;
+      --bee-weight-semibold: 600;
+      --bee-weight-bold: 700;
+
+      /* Line heights */
+      --bee-leading-tight: 1.2;
+      --bee-leading-normal: 1.5;
+      --bee-leading-relaxed: 1.75;
+    /* Spacing scale (dashboard-friendly) */
+    --bee-space-1: 0.25rem;
+    --bee-space-2: 0.5rem;
+    --bee-space-3: 0.75rem;
+    --bee-space-4: 1rem;
+    --bee-space-5: 1.25rem;
+    --bee-space-6: 1.5rem;
+    --bee-space-8: 2rem;
+    --bee-space-10: 2.5rem;
+    --bee-space-12: 3rem;
+
+    /* Shadow system (matches the screenshot) */
+    --bee-shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+    --bee-shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --bee-shadow-md: 0 4px 6px rgba(0,0,0,0.06);
+    --bee-shadow-lg: 0 8px 16px rgba(0,0,0,0.08);
+    --bee-shadow-xl: 0 12px 24px rgba(0,0,0,0.12);
+
+    /* Elevation surfaces */
+    --bee-surface-1: var(--bee-surface);
+    --bee-surface-2: #FFFFFF;
+    --bee-surface-3: #F1F5F9; /* light slate */
+  .btn {
+    @apply font-semibold py-2 px-5 rounded-lg transition-all duration-200;
+    background: var(--bee-surface);
+    color: var(--bee-primary-dark);
+    border: 1px solid var(--bee-border);
+    box-shadow: var(--bee-shadow-xs);
+  }
+
+  .btn:hover {
+    box-shadow: var(--bee-shadow-sm);
+  }
+  /* Primary brand colors (dashboard style) */
+  --bee-primary: #3B82F6;        /* Bright blue */
+  --bee-primary-dark: #1E40AF;   /* Deep blue */
+  --bee-primary-light: #93C5FD;  /* Soft blue */
+
+  /* Accent colors */
+  --bee-accent: #FACC15;         /* Yellow highlight */
+  --bee-accent-dark: #EAB308;
+
+  /* Surface colors */
+  --bee-surface: #FFFFFF;        /* White cards */
+  --bee-surface-alt: #F8FAFC;    /* Light gray-blue background */
+  --bee-border: #E2E8F0;         /* Subtle border */
+
+  /* Semantic colors */
+  --bee-success: #22C55E;
+  --bee-success-bg: #DCFCE7;
+
+  --bee-error: #EF4444;
+  --bee-error-bg: #FEE2E2;
+
+  --bee-warning: #F59E0B;
+  --bee-warning-bg: #FEF3C7;
+
+  --bee-info: #0EA5E9;
+  --bee-info-bg: #E0F2FE;
+
+  /* Radii */
+  --bee-radius: 1rem;
+  --bee-radius-sm: 0.5rem;
+  --bee-radius-lg: 1.5rem;
+
+  /* Shadows */
+  --bee-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  --bee-shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+
+/* BUTTONS */
+  .card {
+    @apply p-6 rounded-xl bg-white border;
+    background: var(--bee-surface-1);
+    border-color: var(--bee-border);
+    box-shadow: var(--bee-shadow-md);
+  }
+
+  .card:hover {
+    box-shadow: var(--bee-shadow-lg);
+    transition: box-shadow 0.2s ease;
+  }
+.btn {
+  @apply font-semibold py-2 px-5 rounded-lg transition-colors duration-200 shadow;
+  background: var(--bee-surface);
+  color: var(--bee-primary-dark);
+  border: 1px solid var(--bee-border);
+}
+.btn-primary {
+  background: var(--bee-primary);
+  color: white;
+  border-color: var(--bee-primary-dark);
+}
+.btn-secondary {
+  background: var(--bee-primary-light);
+  color: var(--bee-primary-dark);
+  border-color: var(--bee-primary);
+}
+  .input {
+    @apply w-full px-4 py-2 rounded-lg border focus:ring-2;
+    border-color: var(--bee-border);
+    background: var(--bee-surface);
+    color: var(--bee-primary-dark);
+    box-shadow: var(--bee-shadow-xs);
+  }
+.btn-ghost {
+  background: transparent;
+  color: var(--bee-primary-dark);
+  border: none;
+}
+
+
+/* CARDS */
+.card {
+  @apply p-6 rounded-xl shadow bg-white border;
+  background: var(--bee-surface);
+  border-color: var(--bee-border);
+  box-shadow: var(--bee-shadow);
+}
+.card-title {
+  @apply text-xl font-bold mb-2;
+  color: var(--bee-primary-dark);
+}
+
+
+/* INPUTS */
+.input {
+  @apply w-full px-4 py-2 rounded-lg border focus:ring-2;
+  border-color: var(--bee-border);
+  background: var(--bee-surface);
+  color: var(--bee-primary-dark);
+  /* Custom focus styles */
+  /* These next two lines are not standard CSS, but for clarity: */
+  /* focus:border-color: var(--bee-primary); */
+  /* focus:ring-color: var(--bee-primary-light); */
+}
+.input-label {
+  @apply block mb-1 font-semibold;
+  color: var(--bee-primary-dark);
+}
+.input-error {
+  @apply border-red-400 text-red-700;
+  border-color: var(--bee-error);
+  color: var(--bee-error);
+}
+
+
+/* ALERTS */
+.alert {
+  @apply p-4 rounded-lg font-medium flex items-start gap-3;
+  border-left: 4px solid;
+}
+.alert-info {
+  background: var(--bee-info-bg);
+  color: var(--bee-info);
+  border-left-color: var(--bee-info);
+}
+.alert-success {
+  background: var(--bee-success-bg);
+  color: var(--bee-success);
+  border-left-color: var(--bee-success);
+}
+.alert-warning {
+  background: var(--bee-warning-bg);
+  color: var(--bee-warning);
+  border-left-color: var(--bee-warning);
+}
+.alert-error {
+  background: var(--bee-error-bg);
+  color: var(--bee-error);
+  border-left-color: var(--bee-error);
+}

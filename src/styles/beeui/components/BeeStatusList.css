@@ -1,0 +1,34 @@
+/* BeeStatusList component styles */
+.bee-status-list {
+  @apply flex flex-col gap-3;
+}
+
+.bee-status-item {
+  @apply flex justify-between items-center p-3 rounded-lg border bg-white;
+  border-color: var(--bee-border);
+  box-shadow: var(--bee-shadow-xs);
+}
+
+.bee-status-label {
+  font-size: var(--bee-font-md);
+  font-weight: var(--bee-weight-medium);
+}
+
+.bee-status-tag {
+  @apply px-2 py-1 rounded-full text-xs;
+}
+
+.bee-status-tag-success {
+  background: var(--bee-success-bg);
+  color: var(--bee-success);
+}
+
+.bee-status-tag-warning {
+  background: var(--bee-warning-bg);
+  color: var(--bee-warning);
+}
+
+.bee-status-tag-error {
+  background: var(--bee-error-bg);
+  color: var(--bee-error);
+}

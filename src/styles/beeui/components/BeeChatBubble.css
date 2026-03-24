@@ -1,0 +1,10 @@
+/* BeeChatBubble component styles */
+.bee-chat-bubble {
+  @apply max-w-xs p-3 rounded-xl shadow;
+  background: var(--bee-primary-light);
+  color: var(--bee-primary-dark);
+}
+
+.bee-chat-bubble-right {
+  @apply ml-auto bg-blue-100;
+}

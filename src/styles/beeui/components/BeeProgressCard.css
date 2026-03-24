@@ -1,0 +1,22 @@
+/* BeeProgressCard (Progress Tracker) component styles */
+.bee-progress-card {
+  @apply p-6 rounded-xl border bg-white;
+  border-color: var(--bee-border);
+  box-shadow: var(--bee-shadow-md);
+}
+
+.bee-progress-title {
+  font-size: var(--bee-font-lg);
+  font-weight: var(--bee-weight-semibold);
+  color: var(--bee-primary-dark);
+}
+
+.bee-progress-bar {
+  @apply w-full h-3 rounded-full bg-gray-200 mt-2;
+}
+
+.bee-progress-bar-fill {
+  height: 100%;
+  background: var(--bee-primary);
+  border-radius: inherit;
+}

@@ -1,0 +1,32 @@
+/* BeeProductCard component styles */
+.bee-product-card {
+  @apply rounded-xl border bg-white overflow-hidden;
+  border-color: var(--bee-border);
+  box-shadow: var(--bee-shadow-md);
+}
+
+.bee-product-image {
+  @apply w-full h-48 object-cover bg-gray-100;
+}
+
+.bee-product-body {
+  @apply p-4 flex flex-col gap-2;
+}
+
+.bee-product-title {
+  font-size: var(--bee-font-lg);
+  font-weight: var(--bee-weight-semibold);
+  color: var(--bee-primary-dark);
+}
+
+.bee-product-price {
+  font-size: var(--bee-font-xl);
+  font-weight: var(--bee-weight-bold);
+  color: var(--bee-primary);
+}
+
+.bee-product-old-price {
+  font-size: var(--bee-font-sm);
+  text-decoration: line-through;
+  color: #94A3B8;
+}

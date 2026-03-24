@@ -1,0 +1,23 @@
+/* BeeStatCard component styles */
+.bee-stat-card {
+  @apply p-6 rounded-xl border bg-white;
+  border-color: var(--bee-border);
+  box-shadow: var(--bee-shadow-md);
+}
+
+.bee-stat-value {
+  font-size: var(--bee-font-3xl);
+  font-weight: var(--bee-weight-bold);
+  color: var(--bee-primary-dark);
+}
+
+.bee-stat-label {
+  font-size: var(--bee-font-sm);
+  color: #64748B;
+}
+
+.bee-stat-change {
+  font-size: var(--bee-font-sm);
+  font-weight: var(--bee-weight-semibold);
+  color: var(--bee-success);
+}

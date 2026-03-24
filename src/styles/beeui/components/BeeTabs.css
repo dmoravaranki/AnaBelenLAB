@@ -1,0 +1,15 @@
+/* BeeTabs component styles */
+.bee-tabs {
+  @apply flex gap-4 border-b;
+  border-color: var(--bee-border);
+}
+
+.bee-tab {
+  @apply pb-2 cursor-pointer font-medium;
+  color: #64748B;
+}
+
+.bee-tab-active {
+  color: var(--bee-primary-dark);
+  border-bottom: 2px solid var(--bee-primary);
+}

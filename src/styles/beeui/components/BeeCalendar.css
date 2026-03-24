@@ -1,0 +1,35 @@
+/* BeeCalendar component styles */
+.bee-calendar {
+  @apply bg-white rounded-xl border p-4;
+  border-color: var(--bee-border);
+  box-shadow: var(--bee-shadow-md);
+}
+
+.bee-calendar-header {
+  @apply flex justify-between items-center mb-4;
+  font-size: var(--bee-font-lg);
+  font-weight: var(--bee-weight-semibold);
+  color: var(--bee-primary-dark);
+}
+
+.bee-calendar-grid {
+  @apply grid grid-cols-7 gap-2;
+}
+
+.bee-calendar-day {
+  @apply p-2 rounded-lg text-center cursor-pointer;
+  background: var(--bee-surface-alt);
+  color: #475569;
+}
+
+.bee-calendar-day-active {
+  background: var(--bee-primary);
+  color: white;
+  font-weight: var(--bee-weight-bold);
+}
+
+.bee-calendar-event {
+  @apply mt-1 text-xs rounded px-1 py-0.5;
+  background: var(--bee-primary-light);
+  color: var(--bee-primary-dark);
+}

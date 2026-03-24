@@ -1,0 +1,20 @@
+/* BeeEditor (New Discovery Editor) component styles */
+.bee-editor {
+  @apply p-4 rounded-xl border bg-white;
+  border-color: var(--bee-border);
+  box-shadow: var(--bee-shadow-md);
+}
+
+.bee-editor-toolbar {
+  @apply flex gap-3 mb-3;
+}
+
+.bee-editor-button {
+  @apply px-2 py-1 rounded bg-gray-100 text-gray-700;
+}
+
+.bee-editor-textarea {
+  @apply w-full h-32 p-3 rounded-lg border;
+  border-color: var(--bee-border);
+  background: var(--bee-surface-alt);
+}

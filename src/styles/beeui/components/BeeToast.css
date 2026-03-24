@@ -1,0 +1,23 @@
+/* BeeToast (Notification Toasts) component styles */
+.bee-toast {
+  @apply flex items-center gap-3 p-4 rounded-lg shadow fixed top-4 right-4;
+  background: var(--bee-surface);
+  border: 1px solid var(--bee-border);
+  box-shadow: var(--bee-shadow-lg);
+}
+
+.bee-toast-info {
+  border-left: 4px solid var(--bee-info);
+}
+
+.bee-toast-success {
+  border-left: 4px solid var(--bee-success);
+}
+
+.bee-toast-warning {
+  border-left: 4px solid var(--bee-warning);
+}
+
+.bee-toast-error {
+  border-left: 4px solid var(--bee-error);
+}
