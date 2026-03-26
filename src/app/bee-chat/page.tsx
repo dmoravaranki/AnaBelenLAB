@@ -19,6 +19,34 @@ function MessageBubble({ message, sender }: { message: string; sender: 'user' | 
 }
 
 export default function ChatUI() {
+		// Suggested prompts (Spanish and English)
+		const suggestedPrompts = [
+			{
+				es: { text: "¿Qué es la polinización?", kid: "Team" },
+				en: { text: "What is pollination?", kid: "Team" }
+			},
+			{
+				es: { text: "¿Cuánta distancia puede volar una abeja al polinizar?", kid: "Mercedes" },
+				en: { text: "How far can a bee fly when pollinating?", kid: "Mercedes" }
+			},
+			{
+				es: { text: "¿Cómo ayuda la polinización a las flores?", kid: "Aaron" },
+				en: { text: "How does pollination help flowers?", kid: "Aaron" }
+			},
+			{
+				es: { text: "¿De qué tamaño es la cabeza de las abejas?", kid: "Alia" },
+				en: { text: "How big is a bee's head?", kid: "Alia" }
+			},
+			{
+				es: { text: "¿Qué pasa si las abejas toman más néctar de lo que deben?", kid: "Ariana" },
+				en: { text: "What happens if bees take more nectar than they should?", kid: "Ariana" }
+			},
+			{
+				es: { text: "¿Por qué las abejas en ocasiones pelean con las avispas?", kid: "Emma" },
+				en: { text: "Why do bees sometimes fight with wasps?", kid: "Emma" }
+			}
+		];
+
 	const [lang, setLang] = useState<'en' | 'es'>('en');
 	const greeting = lang === 'en'
 		? "Hi! I'm QueenBee. Ask me anything about bees!"
@@ -85,33 +113,63 @@ export default function ChatUI() {
 		}
 	}
 
+	// Main render block
 	return (
 		<div className="min-h-screen flex flex-col justify-center items-center bee-gradient px-2">
+			{/* Top Bar with BeeGames and Kids Build links */}
+			<div className="w-full flex justify-center items-center gap-4 py-3 px-4" style={{ background: 'linear-gradient(90deg, #fef08a 0%, #facc15 100%)', borderBottom: '2px solid #fde047', minHeight: 56 }}>
+				<a href="/bee-games" className="font-bold text-yellow-900 hover:underline text-lg px-4 py-2 rounded transition-all" style={{ background: 'rgba(255,255,255,0.2)' }}>
+					🕹️ BeeGames
+				</a>
+				<a href="/bee-chat/kids-build" className="font-bold text-yellow-900 hover:underline text-lg px-4 py-2 rounded transition-all" style={{ background: 'rgba(255,255,255,0.2)' }}>
+					🧒 Kids Build
+				</a>
+			</div>
 			<div className="w-full max-w-2xl flex flex-col items-center justify-center rounded-2xl shadow-lg bg-white/80 p-6 mt-10 mb-8 border border-yellow-100 relative">
 				<img
-					src="/azure-ai-foundry-logo.jpg"
-					alt="Azure AI Foundry Logo"
-					style={{ position: 'absolute', top: 18, right: 18, height: 54, width: 'auto', zIndex: 10, borderRadius: 8, boxShadow: '0 2px 8px #fbbf24aa' }}
+					src="/bee-queen-logo.png"
+					alt="Bee Queen Logo"
+					style={{ position: 'absolute', top: -40, right: 12, height: 220, width: 'auto', zIndex: 10, background: 'none', border: 'none', boxShadow: 'none' }}
 				/>
 				<header className="mb-4 text-center">
-					<BeeMascot />
-					  <h1 className="bee-header">QueenBee Chat</h1>
-					<div className="flex justify-center gap-2 mb-2">
-						<button
-							className={`bee-btn px-4 py-1 text-base ${lang === 'en' ? 'bg-[var(--color-accent)]' : ''}`}
-							onClick={() => setLang('en')}
-							disabled={lang === 'en'}
-							aria-current={lang === 'en' ? 'page' : undefined}
-						>EN</button>
-						<button
-							className={`bee-btn px-4 py-1 text-base ${lang === 'es' ? 'bg-[var(--color-accent)]' : ''}`}
-							onClick={() => setLang('es')}
-							disabled={lang === 'es'}
-							aria-current={lang === 'es' ? 'page' : undefined}
-						>ES</button>
+					<h1 className="bee-header">QueenBee Chat</h1>
+					<div className="flex flex-col items-center gap-1 mb-2">
+						<span className="text-xs font-semibold text-yellow-900 mb-1">Language</span>
+						<div className="flex justify-center gap-2">
+							<button
+								className={`bee-btn px-4 py-1 text-base border-2 ${lang === 'en' ? 'bg-yellow-200 border-yellow-400 text-yellow-900' : 'bg-white border-yellow-200 text-yellow-500'}`}
+								onClick={() => setLang('en')}
+								disabled={lang === 'en'}
+								aria-current={lang === 'en' ? 'page' : undefined}
+							>EN</button>
+							<button
+								className={`bee-btn px-4 py-1 text-base border-2 ${lang === 'es' ? 'bg-yellow-200 border-yellow-400 text-yellow-900' : 'bg-white border-yellow-200 text-yellow-500'}`}
+								onClick={() => setLang('es')}
+								disabled={lang === 'es'}
+								aria-current={lang === 'es' ? 'page' : undefined}
+							>ES</button>
+						</div>
 					</div>
-					<p className="text-lg text-[var(--color-muted)]">{greeting}</p>
 				</header>
+
+
+
+				{/* Suggested Prompts */}
+				<div className="w-full flex flex-wrap gap-3 justify-center mb-6">
+					{suggestedPrompts.map((p, idx) => (
+						<button
+							key={idx}
+							className="bee-btn bg-yellow-100 hover:bg-yellow-200 text-yellow-900 border border-yellow-200 px-4 py-2 rounded-lg flex flex-col items-center min-w-[180px] shadow-sm"
+							style={{ fontSize: '1rem', lineHeight: 1.2 }}
+							onClick={() => setInput(lang === 'en' ? p.en.text : p.es.text)}
+							type="button"
+						>
+							<span>{lang === 'en' ? p.en.text : p.es.text}</span>
+							<span style={{ fontSize: '0.85em', color: '#555', marginTop: 2 }}>{lang === 'en' ? p.en.kid : p.es.kid}</span>
+						</button>
+					))}
+				</div>
+
 				<main className="bee-chat w-full flex-1 overflow-y-auto" ref={chatRef} style={{minHeight: '40vh', maxHeight: '50vh'}}>
 					{messages.map((msg, i) => (
 						<MessageBubble key={i} message={msg.message} sender={msg.sender as 'user' | 'ai'} />

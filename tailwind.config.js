@@ -4,7 +4,7 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx}',
     './src/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    './src/styles/**/*.{css}',
+    './src/styles/**/*.css',
   ],
   safelist: [
     { pattern: /bee-.*/ },
@@ -12,5 +12,8 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: ['aqua'],
+  },
 }
