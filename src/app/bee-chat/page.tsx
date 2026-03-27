@@ -1,6 +1,10 @@
+
 "use client";
 import '../bee-ui.css';
 import { useState, useRef, useEffect } from 'react';
+
+
+const BEE_IMG = '/queen_bee_front.png';
 
 function BeeMascot() {
 	return (
@@ -19,6 +23,14 @@ function MessageBubble({ message, sender }: { message: string; sender: 'user' | 
 }
 
 export default function ChatUI() {
+	// Bee mascot position state
+	// Bee starts at default 'sitting' position
+	// Bee position: always visible, sits at default when not moving
+	const sittingPos = { top: 380, left: 520 };
+	const [beePos, setBeePos] = useState<{top: number, left: number}>(sittingPos);
+	const [beeMoving, setBeeMoving] = useState(false);
+	const beeRef = useRef<HTMLImageElement>(null);
+	const chatMainRef = useRef<HTMLDivElement>(null);
 		// Suggested prompts (Spanish and English)
 		const suggestedPrompts = [
 			{
@@ -74,6 +86,31 @@ export default function ChatUI() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [lang]);
 
+	// Move bee to a random position within the chat box
+	// Move bee to the latest AI answer bubble, then return to sit
+	function moveBeeToAnswer() {
+		setBeeMoving(true);
+		setTimeout(() => {
+			const chatMain = chatMainRef.current;
+			if (!chatMain) return;
+			const bubbles = chatMain.querySelectorAll('.bee-bubble.ai');
+			if (bubbles.length === 0) return;
+			const lastBubble = bubbles[bubbles.length - 1] as HTMLElement;
+			const bubbleRect = lastBubble.getBoundingClientRect();
+			const parentRect = chatMain.getBoundingClientRect();
+			const beeSize = 320;
+			let top = bubbleRect.top - parentRect.top + bubbleRect.height / 2 - beeSize / 2;
+			let left = bubbleRect.left - parentRect.left - beeSize - 12;
+			if (left < 0) left = bubbleRect.right - parentRect.left + 12;
+			if (top < 0) top = 0;
+			setBeePos({ top, left });
+			setTimeout(() => {
+				setBeePos(sittingPos);
+				setBeeMoving(false);
+			}, 1200);
+		}, 100);
+	}
+
 	async function handleSend() {
 		if (!input.trim()) return;
 		const userMsg = { sender: 'user', message: input };
@@ -97,6 +134,7 @@ export default function ChatUI() {
 			setMessages((msgs) => {
 				// Remove the last "thinking" message and add the AI response
 				const msgsNoThinking = msgs.slice(0, -1);
+				setTimeout(moveBeeToAnswer, 400);
 				return [
 					...msgsNoThinking,
 					{ sender: 'ai', message: data.message || (lang === 'en' ? 'Sorry, no response.' : 'Lo siento, no hay respuesta.') }
@@ -105,6 +143,7 @@ export default function ChatUI() {
 		} catch (err) {
 			setMessages((msgs) => {
 				const msgsNoThinking = msgs.slice(0, -1);
+				setTimeout(moveBeeToAnswer, 400);
 				return [
 					...msgsNoThinking,
 					{ sender: 'ai', message: lang === 'en' ? 'Error: AI request failed.' : 'Error: Falló la solicitud de IA.' }
@@ -125,7 +164,33 @@ export default function ChatUI() {
 					🧒 Kids Build
 				</a>
 			</div>
-			<div className="w-full max-w-2xl flex flex-col items-center justify-center rounded-2xl shadow-lg bg-white/80 p-6 mt-10 mb-8 border border-yellow-100 relative">
+			<div
+				id="bee-chat-box"
+				className="w-full max-w-3xl flex flex-col items-center justify-center rounded-2xl shadow-lg bg-white/80 p-8 mt-10 mb-8 border border-yellow-100 relative"
+				style={{ minHeight: 520 }}
+			>
+				{/* Moving Bee Mascot */}
+				{/* Bee only appears in chat area, next to answer bubble */}
+				<div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 4}}>
+					<img
+						ref={beeRef}
+						src={BEE_IMG}
+						alt="Queen Bee"
+						style={{
+							position: 'absolute',
+							top: beePos.top,
+							left: beePos.left,
+							width: 320,
+							height: 320,
+							zIndex: 4,
+							transition: beeMoving
+								? 'top 1.2s cubic-bezier(.7,1.7,.5,1), left 1.2s cubic-bezier(.7,1.7,.5,1)'
+								: 'top 0.7s cubic-bezier(.7,1.7,.5,1), left 0.7s cubic-bezier(.7,1.7,.5,1)',
+							pointerEvents: 'none',
+							userSelect: 'none',
+						}}
+					/>
+				</div>
 				<img
 					src="/bee-queen-logo.png"
 					alt="Bee Queen Logo"
@@ -170,7 +235,7 @@ export default function ChatUI() {
 					))}
 				</div>
 
-				<main className="bee-chat w-full flex-1 overflow-y-auto" ref={chatRef} style={{minHeight: '40vh', maxHeight: '50vh'}}>
+				<main className="bee-chat w-full flex-1 overflow-y-auto" ref={el => { chatRef.current = el; chatMainRef.current = el; }} style={{minHeight: '40vh', maxHeight: '50vh', position: 'relative'}}>
 					{messages.map((msg, i) => (
 						<MessageBubble key={i} message={msg.message} sender={msg.sender as 'user' | 'ai'} />
 					))}
