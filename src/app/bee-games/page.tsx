@@ -42,11 +42,13 @@ export default function BeeGames() {
             </button>
           ))}
         </div>
-        {/* Only show selected game */}
-        <div className="w-full flex flex-col items-center mb-6">
-          <h2 className="text-xl font-bold mb-2 text-yellow-900">{currentGame.name}</h2>
-          <iframe style={{ maxWidth: '100%' }} src={currentGame.url} width="800" height="600" frameBorder="0" allowFullScreen></iframe>
-        </div>
+        {/* Only show selected game if found */}
+        {currentGame && (
+          <div className="w-full flex flex-col items-center mb-6">
+            <h2 className="text-xl font-bold mb-2 text-yellow-900">{currentGame.name}</h2>
+            <iframe style={{ maxWidth: '100%' }} src={currentGame.url} width="800" height="600" frameBorder="0" allowFullScreen></iframe>
+          </div>
+        )}
       </div>
     </div>
   );
