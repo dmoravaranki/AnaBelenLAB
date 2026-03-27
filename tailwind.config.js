@@ -6,9 +6,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
     './src/styles/**/*.css',
   ],
-  safelist: [
-    { pattern: /bee-.*/ },
-  ],
+  // safelist removed: custom bee-* classes are not Tailwind-generated
   theme: {
     extend: {},
   },

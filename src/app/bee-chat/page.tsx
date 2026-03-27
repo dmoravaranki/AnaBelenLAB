@@ -235,7 +235,14 @@ export default function ChatUI() {
 					))}
 				</div>
 
-				<main className="bee-chat w-full flex-1 overflow-y-auto" ref={el => { chatRef.current = el; chatMainRef.current = el; }} style={{minHeight: '40vh', maxHeight: '50vh', position: 'relative'}}>
+				<main
+					className="bee-chat w-full flex-1 overflow-y-auto"
+					ref={el => {
+						chatRef.current = el as HTMLDivElement | null;
+						chatMainRef.current = el as HTMLDivElement | null;
+					}}
+					style={{minHeight: '40vh', maxHeight: '50vh', position: 'relative'}}
+				>
 					{messages.map((msg, i) => (
 						<MessageBubble key={i} message={msg.message} sender={msg.sender as 'user' | 'ai'} />
 					))}
