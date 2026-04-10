@@ -127,6 +127,7 @@ body::before {
     font-weight: 600;
     letter-spacing: 0.01em;
     padding: 0.7rem 0.7rem;
+    font-family: 'Inter', Arial, 'Segoe UI', system-ui, sans-serif !important;
   }
 }
 .bee-btn:hover {

@@ -1,63 +1,10 @@
-import Link from "next/link";
+// Redirect landing page to QueenBee Chat
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <div className="min-h-screen flex flex-col bg-base-100">
-      {/* NAVBAR (DaisyUI) */}
-      <div className="navbar bg-base-100 shadow-sm sticky top-0 z-30">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle lg:hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-            </div>
-            <ul tabIndex={-1} className="menu menu-sm dropdown-content mt-3 z-40 p-2 shadow bg-base-100 rounded-box w-52">
-              <li><Link href="/bee-chat">QueenBee Chat</Link></li>
-              {/* Add more mobile links here */}
-            </ul>
-          </div>
-          <Link href="/" className="btn btn-ghost text-xl gap-2"><span className="inline-block text-2xl">🔬</span> Belen's LAB</Link>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li><Link href="/bee-chat">QueenBee Chat</Link></li>
-            {/* Add more desktop links here */}
-          </ul>
-        </div>
-        <div className="navbar-end">
-          {/* Example icon button, can be replaced/extended */}
-          <button className="btn btn-ghost btn-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-          </button>
-        </div>
-      </div>
-
-      <main className="flex flex-col gap-20 flex-1">
-        {/* HERO SECTION */}
-        <section className="flex flex-col items-center justify-center flex-1 py-24">
-          <div className="max-w-3xl w-full text-center">
-            <div className="flex flex-col items-center gap-6">
-              <span className="inline-block text-7xl mb-2">🧬</span>
-              <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">Faster, fun, and easier science learning<br /><span className="text-accent">with Belen's LAB</span></h1>
-              <p className="text-xl md:text-2xl font-medium mb-8 text-primary-content/80">The playful science platform for curious kids! Explore, experiment, and earn badges while having fun.</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/bee-chat" className="btn btn-accent btn-lg">Start Chatting</Link>
-                <button className="btn btn-secondary btn-lg">For Teachers</button>
-              </div>
-            </div>
-            {/* Floating card/graphic for showcase effect */}
-            <div className="relative mt-16 flex justify-center">
-              <div className="rounded-2xl shadow-2xl p-8 w-full max-w-xl border-4 border-accent/30" style={{transform: 'rotate(-3deg)'}}>
-                <div className="flex flex-col md:flex-row gap-6 items-center justify-between">
-                  <div className="flex flex-col items-center md:items-start">
-                    <span className="text-4xl mb-2">🧪</span>
-                    <span className="font-bold text-lg">Fun Experiments</span>
-                  </div>
-                  <div className="flex flex-col items-center md:items-start">
-                    <span className="text-4xl mb-2">🏅</span>
-                    <span className="font-bold text-lg">Science Badges</span>
-                  </div>
-                  <div className="flex flex-col items-center md:items-start">
-                    <span className="text-4xl mb-2">👩‍🏫</span>
+  redirect('/bee-chat');
+  return null;
+}
                     <span className="font-bold text-lg">Teacher Tools</span>
                   </div>
                 </div>
