@@ -1,4 +1,3 @@
-// Redirect landing page to QueenBee Chat
 import { redirect } from 'next/navigation';
 
 export default function Home() {
